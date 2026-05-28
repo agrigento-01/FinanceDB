@@ -1,7 +1,9 @@
-﻿using FinanceDB.Data;
+﻿using FinanceDB.Domain;
 using FinanceDB.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 
@@ -10,6 +12,22 @@ namespace FinanceDB.ViewModels
     public class MainWindowViewModel : INotifyPropertyChanged
     {
         private string _tickerQuery;
+
+        private ObservableCollection<Fund> _funds = new ObservableCollection<Fund>();
+        public ObservableCollection<Fund> Funds
+        {
+            get { return _funds; }
+            set {
+                _funds = value;
+                OnPropertyChanged(nameof(_funds));
+                }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public string TickerQuery
         {
@@ -31,30 +49,27 @@ namespace FinanceDB.ViewModels
             }
         }
 
-        private Funds
-
-        public MainWindowViewModel()
+        public async Task LoadFunds()
         {
-            Fund = new Fund
-            {
-                Fund1 = "SCHD",
-                Desc = "dividend"
-            };
-
             using (var context = new FinanceDbContext())
             {
                 context.Database.EnsureCreated();
 
+                var funds = await context.Funds.ToListAsync();
+
+                Funds.Clear();
+                foreach (var fund in funds)
+                {
+                    Funds.Add(fund);
+                }
                 //context.SaveChanges();
-                
+
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string propertyName)
+        public MainWindowViewModel()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            LoadFunds();
         }
-
     }
 }

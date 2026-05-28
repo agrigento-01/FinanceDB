@@ -6,25 +6,21 @@
         xmlns:local="clr-namespace:FinanceDB.Views"
         xmlns:vm="clr-namespace:FinanceDB.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Window.Resources>
-        <vm:MainWindowViewModel x:Key="vm"/>
-    </Window.Resources>
-    <Grid DataContext="{StaticResource vm}">
-        <StackPanel DataContext="{Binding Fund}" Margin="10">
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="Window_Loaded">
+    
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+        <Grid>
+        <StackPanel Margin="10">
             <TextBox Text="{Binding TickerQuery, Mode=TwoWay}" Margin="0,5,0,5"/>
             <Button Margin="0,5" Content="Search"/>
-            <Label Content="{Binding Fund1}"/>
-            <DataGrid Name="dgItems"
+            <Label Content="placeholder"/>
+            <DataGrid ItemsSource="{Binding Funds}"
+                    Name="dgItems"
                     AlternatingRowBackground="PaleVioletRed"
                     AutoGenerateColumns="True">
-                    <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                    <DataGridTextColumn Header="Name" Binding="{Binding SType}"/>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Country}"/>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Description}"/>
-                </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
     </Grid>

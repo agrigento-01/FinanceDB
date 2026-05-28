@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using FinanceDB.ViewModels;
+using Microsoft.Extensions.Primitives;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +21,14 @@ namespace FinanceDB.Views
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowViewModel();
+        }
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (this.DataContext is MainWindowViewModel vm)
+            {
+                await vm.LoadFunds();
+            }
         }
     }
 }

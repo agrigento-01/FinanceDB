@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FinanceDB.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace FinanceDB.Data;
+namespace FinanceDB.Domain;
 
 public partial class FinanceDbContext : DbContext
 {
