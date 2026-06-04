@@ -1,17 +1,23 @@
-﻿using FinanceDB.Domain;
+﻿using FinanceDB.Commands;
+using FinanceDB.Domain;
 using FinanceDB.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace FinanceDB.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
         private string _tickerQuery;
+
+        public SearchCommand SearchCommand { get; set; }
 
         private ObservableCollection<Fund> _funds = new ObservableCollection<Fund>();
         public ObservableCollection<Fund> Funds
@@ -24,6 +30,8 @@ namespace FinanceDB.ViewModels
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        public event TextChangedEventHandler TextChanged;
+
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -49,11 +57,14 @@ namespace FinanceDB.ViewModels
             }
         }
 
+        /// <summary>
+        /// Loads the funds from the dbo
+        /// </summary>
         public async Task LoadFunds()
         {
             using (var context = new FinanceDbContext())
             {
-                context.Database.EnsureCreated();
+                context.Database.EnsureCreated();       // ensure the database is created if .dbo doesn't exist
 
                 var funds = await context.Funds.ToListAsync();
 
@@ -62,14 +73,35 @@ namespace FinanceDB.ViewModels
                 {
                     Funds.Add(fund);
                 }
-                //context.SaveChanges();
+            }
+        }
 
+        /// <summary>
+        /// Search by by the 'Fund' (i.e. ticker) header
+        /// </summary>
+        public async Task SearchFunds(string? query)
+        {
+            using (var context = new FinanceDbContext())
+            {
+                context.Database.EnsureCreated();
+
+                // index first char, so no % on left of query
+                var funds = context.Funds.Where(x => EF.Functions.Like(x.Fund1, $"%{query}%")).ToList();
+
+                Funds.Clear();
+                if (!funds.IsNullOrEmpty())
+                {
+                    foreach (var fund in funds)
+                    {
+                        Funds.Add(fund);
+                    }
+                }
             }
         }
 
         public MainWindowViewModel()
         {
-            LoadFunds();
+            SearchCommand = new SearchCommand(this);
         }
     }
 }

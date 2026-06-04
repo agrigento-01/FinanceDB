@@ -30,5 +30,17 @@ namespace FinanceDB.Views
                 await vm.LoadFunds();
             }
         }
+
+        /// <summary>
+        /// Handles query search from a textbox to the viewmodel dbo handler
+        /// </summary>
+        public async void Query_Search(object sender, TextChangedEventArgs e)
+        {
+            var query = sender as TextBox;
+            if (this.DataContext is MainWindowViewModel vm)
+            {
+                await vm.SearchFunds(query.Text.ToString());
+            }
+        }
     }
 }

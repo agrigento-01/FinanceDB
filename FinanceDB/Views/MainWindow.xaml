@@ -14,8 +14,8 @@
     </Window.DataContext>
         <Grid>
         <StackPanel Margin="10">
-            <TextBox Text="{Binding TickerQuery, Mode=TwoWay}" Margin="0,5,0,5"/>
-            <Button Margin="0,5" Content="Search"/>
+            <TextBox TextChanged="Query_Search" Margin="0,5,0,5"/>
+            <Button Margin="0,5" Content="Refresh" Command="{Binding SearchCommand}"/>
             <Label Content="placeholder"/>
             <DataGrid ItemsSource="{Binding Funds}"
                     Name="dgItems"
