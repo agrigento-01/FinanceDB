@@ -5,9 +5,7 @@ namespace FinanceDB.Models;
 
 public partial class Fund
 {
-    public string Fund1 { get; set; } = null!;
-
-    public string Desc { get; set; } = null!;
+    public required string Fund1 { get; set; }
 
     public double? Share { get; set; }
 
@@ -38,4 +36,6 @@ public partial class Fund
     public double? TRatDiff { get; set; }
 
     public string? DivFreq { get; set; } = null!;
+
+    public string? Desc { get; set; } = null!;
 }

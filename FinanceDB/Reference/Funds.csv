@@ -1,0 +1,13 @@
+Fund,Desc,Share,Add_shares,Per_Share,Dist_Yield,Add_Total,Total,Yr_dividend,Per_div,Exp_Ratio,Add_Yr_Div,Tot_Yr_Div,T_Ratio,Ratio,T_Rat_Diff,Div_Freq
+FDRXX*,7-day FDRXX yield of ~3.3% (5/23/2026),,,,,,0.1,,,0.0037,,,,0,,monthly
+NVDA,stock,2,0,218.66,0.0046,0,437.32,1.01,217.39,0,0,2.01,0,0.0191,0.0191,quarterly
+FLKR,,4,0,65.69,0.0189,0,262.76,1.24,52.91,0.0009,0,4.97,0.04,0.0115,-0.0285,bi-annually
+FLTW,,2.84,0,104.28,0.0146,0,296.16,1.52,68.49,0.0019,0,4.32,0.04,0.0129,-0.0271,bi-annually
+SOXQ,"100% Semiconductor ETF, 12.3-16.1% intl",12,0,107.22,0.0026,0,1286.64,0.28,384.62,0.0019,0,3.35,0.04,0.0562,0.0162,quarterly
+XLK,"TFP - 100% tech, 1.0-3.5% intl, State Street",18.015,0,193.17,0.004,0,3479.96,0.77,250,0.0008,0,13.92,0.08,0.1521,0.0721,quarterly
+SCHG,"TFP - growth-tech, 46% tech, 0.27-0.29% intl, Schwab",72.85,0,34.79,0.0036,0,2534.45,0.13,277.78,0.0004,0,9.12,0.14,0.1107,-0.0293,quarterly
+SPYM,"TFP - SP 500 1/3 tech, 0.6% intl, State Street",16.04,0,89.11,0.0099,0,1429.32,0.88,101.01,0.0002,0,14.15,0.08,0.0625,-0.0175,quarterly
+SCHB,"TFP - total US mkt portion, 1/3 tech, 0.75% intl, Schwab",160,0,29.24,0.0101,0,4678.4,0.3,99.01,0.0003,0,47.25,0.24,0.2044,-0.0356,quarterly
+SCHF,"TFP - intl-only developed mkts portion, 1/10 tech, Schwab",164,0,27.86,0.0295,0,4569.04,0.82,33.9,0.0003,0,134.79,0.18,0.1997,0.0197,bi-annually
+SCHD,"Dividend,  ~0.17% tech, 0% intl, tracks Dow Jones U.S. Dividend 100™ Index, Schwab",120,0,32.59,0.0324,0,3910.8,1.06,30.86,0.0006,0,126.71,0.12,0.1709,0.0509,quarterly
+VYMI,"intl dividend, SCHD counterpart, 3.9% tech, 100% intl, tracks high yield/quality dividend ex-US stocks, Schwab",0,0,100.03,0.0342,0,0,3.42,29.24,0.0007,0,0,0.04,0,-0.04,quarterly
