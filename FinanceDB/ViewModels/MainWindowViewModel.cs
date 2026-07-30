@@ -86,7 +86,7 @@ namespace FinanceDB.ViewModels
                 context.Database.EnsureCreated();
 
                 // index first char, so no % on left of query
-                var funds = context.Funds.Where(x => EF.Functions.Like(x.Fund1, $"%{query}%")).ToList();
+                var funds = context.Funds.Where(x => EF.Functions.Like(x.Ticker, $"%{query}%")).ToList();
 
                 Funds.Clear();
                 if (!funds.IsNullOrEmpty())

@@ -20,6 +20,10 @@ namespace FinanceDB.Views
     {
         public MainWindow()
         {
+            var format = new Format("");
+
+            this.dgItems.Columns[1].CellStyle();
+
             InitializeComponent();
             DataContext = new MainWindowViewModel();
         }

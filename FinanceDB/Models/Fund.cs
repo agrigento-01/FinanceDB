@@ -5,17 +5,17 @@ namespace FinanceDB.Models;
 
 public partial class Fund
 {
-    public required string Fund1 { get; set; }
+    public required string Ticker { get; set; }
 
     public double? Share { get; set; }
 
-    public byte? AddShares { get; set; }
+    public double? AddShares { get; set; }
 
     public double? PerShare { get; set; }
 
     public double? DistYield { get; set; }
 
-    public byte? AddTotal { get; set; }
+    public double? AddTotal { get; set; }
 
     public double? Total { get; set; }
 
@@ -25,7 +25,7 @@ public partial class Fund
 
     public double? ExpRatio { get; set; }
 
-    public byte? AddYrDiv { get; set; }
+    public double? AddYrDiv { get; set; }
 
     public double? TotYrDiv { get; set; }
 

@@ -37,9 +37,9 @@ public partial class FinanceDbContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("Div_Freq");
             entity.Property(e => e.ExpRatio).HasColumnName("Exp_Ratio");
-            entity.Property(e => e.Fund1)
+            entity.Property(e => e.Ticker)
                 .HasMaxLength(50)
-                .HasColumnName("Fund");
+                .HasColumnName("Ticker");
             entity.Property(e => e.PerDiv).HasColumnName("Per_div");
             entity.Property(e => e.PerShare).HasColumnName("Per_Share");
             entity.Property(e => e.TRatDiff).HasColumnName("T_Rat_Diff");
