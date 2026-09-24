@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:FinanceDB"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Link to the external style file -->
+                <ResourceDictionary Source="/Utility/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

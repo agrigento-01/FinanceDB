@@ -20,9 +20,6 @@ namespace FinanceDB.Views
     {
         public MainWindow()
         {
-            var format = new Format("");
-
-            this.dgItems.Columns[1].CellStyle();
 
             InitializeComponent();
             DataContext = new MainWindowViewModel();
@@ -43,7 +40,14 @@ namespace FinanceDB.Views
             var query = sender as TextBox;
             if (this.DataContext is MainWindowViewModel vm)
             {
-                await vm.SearchFunds(query.Text.ToString());
+                if (query.Text.ToString() != String.Empty)
+                {
+                    await vm.SearchFunds(query.Text.ToString());
+                }
+                else
+                {
+                    await vm.LoadFunds();
+                }
             }
         }
     }
