@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Text;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -100,6 +101,26 @@ namespace FinanceDB.ViewModels
                         Funds.Add(fund);
                     }
                 }
+            }
+        }
+
+        private void SaveChanges()
+        {
+            using (var context = new FinanceDbContext())
+            {
+                context.SaveChanges();
+
+                var records = context.Funds
+                    .OrderBy(f => f.Ticker)
+                    .ToList();
+
+                /*
+                using var writer = new StreamWriter(
+                    context.Database.GetDbConnection().ConnectionString + "_copy");
+                using var csv = new CsvWriter(
+                    writer, System.Globalization.CultureInfo.InvariantCulture);
+                */
+
             }
         }
 

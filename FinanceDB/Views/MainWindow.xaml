@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FinanceDB.Views"
         xmlns:vm="clr-namespace:FinanceDB.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Width="1360" Height="768"
         Loaded="Window_Loaded">
     
     <Window.DataContext>
@@ -15,29 +15,31 @@
         <Grid>
         <StackPanel Margin="10">
             <TextBox TextChanged="Query_Search" Margin="0,5,0,5"/>
-            <Button Margin="0,5" Content="Refresh" Command="{Binding SearchCommand}"/>
+            <Button Margin="0,5" Content="Refresh" Command="{Binding SearchCommand, StringFormat={}{0:C}}"/>
             <Label Content="placeholder"/>
-            <DataGrid ItemsSource="{Binding Funds}"
+            <DataGrid ItemsSource="{Binding Funds, StringFormat={}{0:C}}"
                     Name="dgItems"
                     AlternatingRowBackground="PaleVioletRed"
-                    AutoGenerateColumns="True">
+                    AutoGenerateColumns="False"
+                    HeadersVisibility="Column"
+                    ColumnWidth="*">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Ticker" Binding="{Binding Ticker}"/>
-                    <DataGridTextColumn Header="Share" Binding="{Binding Share}" CellStyle="{StaticResource DeciCash}" />
-                    <DataGridTextColumn Header="Per Share" Binding="{Binding PerShare}" CellStyle="{StaticResource DeciCash}" />
-                    <DataGridTextColumn Header="Dist. Yield" Binding="{Binding DistYield, StringFormat={}{:######}$}" />
-                    <DataGridTextColumn Header="Add Total" Binding="{Binding AddTotal}" CellStyle="{StaticResource DeciCash}" />
-                    <DataGridTextColumn Header="Total" Binding="{Binding Total}" CellStyle="{StaticResource DeciCash}" />
-                    <DataGridTextColumn Header="Yr. Dividend" Binding="{Binding YrDividend}" CellStyle="{StaticResource DeciCash}" />
-                    <DataGridTextColumn Header="Per div." Binding="{Binding PerDiv}" CellStyle="{StaticResource DeciCash}" />
-                    <DataGridTextColumn Header="Exp. Ratio" Binding="{Binding ExpRatio}" CellStyle="{StaticResource DeciCash}" />
-                    <DataGridTextColumn Header="Add Yr. Div" Binding="{Binding AddYrDiv}" CellStyle="{StaticResource DeciCash}" />
-                    <DataGridTextColumn Header="Tot. Yr. Div" Binding="{Binding TotYrDiv}" CellStyle="{StaticResource DeciCash}" />
-                    <DataGridTextColumn Header="T. Ratio" Binding="{Binding TRatio}" CellStyle="{StaticResource DeciCash}" />
-                    <DataGridTextColumn Header="Ratio" Binding="{Binding Ratio}" CellStyle="{StaticResource DeciCash}" />
-                    <DataGridTextColumn Header="T. Rat. Diff" Binding="{Binding TRatDiff}" CellStyle="{StaticResource DeciCash}" />
-                    <DataGridTextColumn Header="Div. Freq" Binding="{Binding DivFreq}" CellStyle="{StaticResource DeciCash}" />
-                    <DataGridTextColumn Header="Desc" Binding="{Binding Desc}" CellStyle="{StaticResource DeciCash}" />
+                    <DataGridTextColumn Header="Share" Binding="{Binding Share}" />
+                    <DataGridTextColumn Header="Per Share" Binding="{Binding PerShare, StringFormat={}{0:C}}" />
+                    <DataGridTextColumn Header="Dist. Yield" Binding="{Binding DistYield,StringFormat={}{0:P}}" />
+                    <DataGridTextColumn Header="Add Total" Binding="{Binding AddTotal, StringFormat={}{0:C}}" />
+                    <DataGridTextColumn Header="Total" Binding="{Binding Total, StringFormat={}{0:C}}" />
+                    <DataGridTextColumn Header="Yr. Dividend" Binding="{Binding YrDividend, StringFormat={}{0:C}}" />
+                    <DataGridTextColumn Header="Per div." Binding="{Binding PerDiv, StringFormat={}{0:C}}" />
+                    <DataGridTextColumn Header="Exp. Ratio" Binding="{Binding ExpRatio,StringFormat={}{0:P3}}" />
+                    <DataGridTextColumn Header="Add Yr. Div" Binding="{Binding AddYrDiv, StringFormat={}{0:C}}" />
+                    <DataGridTextColumn Header="Tot. Yr. Div" Binding="{Binding TotYrDiv, StringFormat={}{0:C}}" />
+                    <DataGridTextColumn Header="T. Ratio" Binding="{Binding TRatio,StringFormat={}{0:P}}" />
+                    <DataGridTextColumn Header="Ratio" Binding="{Binding Ratio, StringFormat={}{0:P}}" />
+                    <DataGridTextColumn Header="T. Rat. Diff" Binding="{Binding TRatDiff, StringFormat={}{0:P}}" />
+                    <DataGridTextColumn Header="Div. Freq" Binding="{Binding DivFreq}" />
+                    <!--DataGridTextColumn Header="Desc" Binding="{Binding Desc}" /-->
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
