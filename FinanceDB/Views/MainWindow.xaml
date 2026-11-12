@@ -16,7 +16,7 @@
         <StackPanel Margin="10">
             <TextBox TextChanged="Query_Search" Margin="0,5,0,5"/>
             <Button Margin="0,5" Content="Refresh" Command="{Binding SearchCommand, StringFormat={}{0:C}}"/>
-            <Label Content="placeholder"/>
+            <Label Content="[ placeholder ]"/>
             <DataGrid ItemsSource="{Binding Funds, StringFormat={}{0:C}}"
                     Name="dgItems"
                     AlternatingRowBackground="PaleVioletRed"
@@ -25,7 +25,7 @@
                     ColumnWidth="*">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Ticker" Binding="{Binding Ticker}"/>
-                    <DataGridTextColumn Header="Share" Binding="{Binding Share}" />
+                    <DataGridTextColumn Header="Share" Binding="{Binding Share, StringFormat={}{0:F2}}" />
                     <DataGridTextColumn Header="Per Share" Binding="{Binding PerShare, StringFormat={}{0:C}}" />
                     <DataGridTextColumn Header="Dist. Yield" Binding="{Binding DistYield,StringFormat={}{0:P}}" />
                     <DataGridTextColumn Header="Add Total" Binding="{Binding AddTotal, StringFormat={}{0:C}}" />
